@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Lagos Life Sim</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{margin:0;background:#e8f6ff;font-family:Arial;text-align:center}
+.top{padding:35px 20px 10px}
+.top h1{font-size:32px;margin:5px}
+.badge{background:#111;color:#fff;font-size:12px;padding:4px 8px;border-radius:10px;vertical-align:middle}
+.sub{color:#666}
+.card{background:#fff;margin:15px;border-radius:25px;padding:25px;box-shadow:0 5px 20px rgba(0,0,0,0.08);text-align:left}
+.reward{background:#d9f7e3;color:#0a7a3a;padding:15px;border-radius:15px;text-align:center;font-weight:bold}
+.toggle{display:flex;background:#f0f0f0;border-radius:30px;padding:5px;margin:20px 0}
+.toggle button{flex:1;padding:12px;border:none;border-radius:25px;font-weight:bold;cursor:pointer}
+.toggle .active{background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
+label{font-size:12px;color:#666;font-weight:bold;letter-spacing:1px}
+input{width:100%;padding:14px;border:1px solid #eee;border-radius:12px;margin:8px 0 18px;background:#f9f9f9;box-sizing:border-box}
+.btn{width:100%;background:#22c55e;color:white;padding:16px;border:none;border-radius:15px;font-size:16px;font-weight:bold;cursor:pointer}
+</style>
+</head>
+<body>
+
+<div class="top">
+<div style="font-size:40px">👑</div>
+<h1>Lagos Life Sim <span class="badge">18+</span></h1>
+<p class="sub">Live your Lagos story with real people.</p>
+</div>
+
+<div class="card">
+<div class="reward">🎁 Log in to play your Lagos Life!</div>
+
+<div class="toggle">
+<button id="btnCreate" onclick="switchTab('create')">Create account</button>
+<button id="btnLogin" class="active" onclick="switchTab('login')">Log in</button>
+</div>
+
+<label>USERNAME OR EMAIL</label>
+<input id="user" placeholder="tolu_eko">
+
+<label>PASSWORD</label>
+<input id="pass" type="password" placeholder="........">
+
+<p style="color:#666">← Back home</p>
+<button class="btn" onclick="login()">Log In To Play →</button>
+<p id="msg" style="text-align:center;color:green"></p>
+</div>
+
+<script>
+let mode = 'login';
+function switchTab(m){
+  mode = m;
+  document.getElementById('btnCreate').className = m=='create' ? 'active' : '';
+  document.getElementById('btnLogin').className = m=='login' ? 'active' : '';
+}
+function login(){
+  let u = document.getElementById('user').value;
+  let p = document.getElementById('pass').value;
+  if(!u || !p) return alert("Put username and password");
+  // Save for YOUR game - no server yet
+  localStorage.setItem('myuser', u);
+  document.getElementById('msg').innerText = "Welcome " + u + "! Your account don save. Now you fit add game dashboard.";
+  alert("Welcome to My Lagos Life, " + u + "!");
+}
+</script>
+</body>
+</html>
